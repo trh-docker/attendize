@@ -9,15 +9,16 @@ WORKDIR /var/www/html
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&\
     apt-get update &&\ 
     apt-get install -y \ 
-    php${PHP_VERSION}-zip \
-    php${PHP_VERSION}-bcmath \
-    php${PHP_VERSION}-imap \
-    php${PHP_VERSION}-curl \
-    php${PHP_VERSION}-opcache \
-    php${PHP_VERSION}-mysql \
-    php${PHP_VERSION}-mbstring \
-    php${PHP_VERSION}-gd \
-    php${PHP_VERSION}-xml&& \
+    libpq-dev \
+    libmcrypt-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    libxrender1 \
+    libfontconfig \
+    libxext-dev &&\
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ &&\
+    docker-php-ext-install -j$(nproc) pdo_mysql mysqli mcrypt gd zip &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 
