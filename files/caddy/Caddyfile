@@ -1,0 +1,8 @@
+{$DOMAIN}:{$PORT} {
+    tls off
+    root /opt/tlm/html/Attendize
+    fastcgi / /run/php/php7.3-fpm.sock php
+    rewrite {
+        to {path} {path}/ /index.php?{query}
+    }
+}
