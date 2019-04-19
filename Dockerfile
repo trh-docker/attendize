@@ -10,7 +10,7 @@ RUN apt-get update &&\
 # php7.0-imap php7.0-curl php7.0-opcache
 
 RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
-    git clone https://github.com/trh-docker/attendize.git . &&\
+    git clone https://github.com/Attendize/Attendize.git . &&\
     mkdir /var/www/html/public_html &&\
     composer.phar install &&\
     chown -R www-data:www-data . &&\
