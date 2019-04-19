@@ -12,7 +12,7 @@ RUN apt-get update &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 RUN apt-get update && apt-get install -y \
-    php${PHP_VERSION_DEP} \
+    php${PHP_VERSION_DEP} --allow-unauthenticated \
     # php${PHP_VERSION_DEP}.cgi \
     # php${PHP_VERSION_DEP}-dom \
     # php${PHP_VERSION_DEP}-ctype \
