@@ -1,9 +1,13 @@
-FROM quay.io/spivegin/php7:7.3
+FROM quay.io/spivegin/php7:7.1
+
+ENV DOMAIN=0.0.0.0 \
+    PORT=80 \
+    PHP_VERSION=7.1
 
 WORKDIR /var/www/html 
 
 RUN apt-get update &&\ 
-    apt-get install -y php7.3-zip php7.3-bcmath php7.3-imap php7.0-curl php7.3-opcache php7.3-mysql && \
+    apt-get install -y php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath php${PHP_VERSION}-imap php7.0-curl php${PHP_VERSION}-opcache php${PHP_VERSION}-mysql && \
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 
@@ -13,8 +17,6 @@ RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
     composer.phar install &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
-ENV DOMAIN=0.0.0.0 \
-    PORT=80
 EXPOSE 80
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/opt/bin/entry.sh"]
