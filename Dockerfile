@@ -14,7 +14,7 @@ RUN apt-get update &&\
 RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
     git clone https://github.com/Attendize/Attendize.git . &&\
     mkdir /var/www/html/public_html &&\
-    composer.phar install &&\
+    # composer.phar install &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 EXPOSE 80
