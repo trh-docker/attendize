@@ -1,8 +1,8 @@
-FROM quay.io/spivegin/php7:7.3
+FROM quay.io/spivegin/php7:7.1
 
 ENV DOMAIN=0.0.0.0 \
     PORT=80 \
-    PHP_VERSION=7.3
+    PHP_VERSION=7.1
 
 WORKDIR /var/www/html 
 
