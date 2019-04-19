@@ -17,7 +17,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&
     php${PHP_VERSION}-mysql \
     php${PHP_VERSION}-mbstring \
     php${PHP_VERSION}-gd \
-    php${PHP_VERSION}-xml && \
+    php${PHP_VERSION}-xml \
     libpq-dev \
     libmcrypt-dev \
     libpng-dev \
