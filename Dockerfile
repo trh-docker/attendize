@@ -2,7 +2,7 @@ FROM quay.io/spivegin/php7:7.1.3
 
 ENV DOMAIN=0.0.0.0 \
     PORT=80 \
-    PHP_VERSION=7.1.3
+    PHP_VERSION=7.1
 
 WORKDIR /var/www/html 
 
