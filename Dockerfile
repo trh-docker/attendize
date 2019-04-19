@@ -7,7 +7,7 @@ ENV DOMAIN=0.0.0.0 \
 WORKDIR /var/www/html 
 
 RUN apt-get update &&\ 
-    apt-get install -y php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath php${PHP_VERSION}-imap php7.0-curl php${PHP_VERSION}-opcache php${PHP_VERSION}-mysql && \
+    apt-get install -y --allow-unauthenticated php${PHP_VERSION}-zip php${PHP_VERSION}-bcmath php${PHP_VERSION}-imap php7.0-curl php${PHP_VERSION}-opcache php${PHP_VERSION}-mysql && \
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 
