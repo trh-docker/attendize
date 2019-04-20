@@ -28,11 +28,11 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&
     libxext-dev &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
-
 RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
     git clone https://github.com/Attendize/Attendize.git . &&\
-    mkdir /var/www/html/public_html &&\
-    cp .env.example .env &&\
+    mkdir /var/www/html/public_html
+ADD files/php/composer.json /var/www/html 
+RUN cp .env.example .env &&\
     # composer.phar install &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
