@@ -7,4 +7,4 @@
 # Caddy
 caddy -conf /opt/caddy/Caddyfile &
 # Run PHP in background
-/usr/sbin/php-fpm7.0 --nodaemonize --fpm-config /etc/php/7.0/fpm/php-fpm.conf 
+/usr/sbin/php-fpm7.3 --nodaemonize --fpm-config /etc/php/7.3/fpm/php-fpm.conf 

@@ -1,4 +1,4 @@
-FROM quay.io/spivegin/php7:7.1.3
+FROM quay.io/spivegin/php7:7.3
 
 ENV DOMAIN=0.0.0.0 \
     PORT=80
@@ -8,14 +8,14 @@ WORKDIR /var/www/html
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&\
     apt-get update &&\ 
     apt-get install -y \ 
-    php-zip \
-    php-bcmath \
-    php-imap \
-    php-mysql \
-    php-mbstring \
-    php-curl \
-    php-gd \
-    php-xml \
+    php7.3-zip \
+    php7.3-bcmath \
+    php7.3-imap \
+    php7.3-mysql \
+    php7.3-mbstring \
+    php7.3-curl \
+    php7.3-gd \
+    php7.3-xml \
     libpq-dev \
     libmcrypt-dev \
     libpng-dev \
@@ -27,11 +27,12 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
-    git clone https://github.com/Attendize/Attendize.git . &&\
-    mkdir /var/www/html/public_html
+    git clone https://github.com/Attendize/Attendize.git .
+
 ADD files/php/composer.json /var/www/html 
-RUN cp .env.example .env &&\
-    composer.phar install &&\
+ADD files/php/php.ini /etc/php/7.3/fpm/
+ADD files/attendize/env /var/www/html/.env
+RUN composer.phar install &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 EXPOSE 80
