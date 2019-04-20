@@ -32,7 +32,9 @@ RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
 ADD files/php/composer.json /var/www/html 
 ADD files/php/php.ini /etc/php/7.3/fpm/
 ADD files/attendize/env /var/www/html/.env
-RUN composer.phar install &&\
+ADD files/bash/entry.sh /opt/bin/entry.sh
+RUN chmod +x /opt/bin/entry.sh &&\
+    composer.phar install &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 EXPOSE 80
