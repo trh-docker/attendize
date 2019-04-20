@@ -11,7 +11,6 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&
     php-zip \
     php-bcmath \
     php-imap \
-    php-opcache \
     php-mysql \
     php-mbstring \
     php-curl \
