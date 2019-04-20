@@ -1,7 +1,7 @@
 {$DOMAIN}:{$PORT} {
     tls off
     root /var/www/html/public
-    fastcgi / /run/php/php7.1-fpm.sock php
+    fastcgi / /run/php/php7.3-fpm.sock php
     rewrite {
         to {path} {path}/ /index.php?{query}
     }

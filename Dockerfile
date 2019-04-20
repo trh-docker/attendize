@@ -23,7 +23,10 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&
     libfreetype6-dev \
     libxrender1 \
     libfontconfig \
-    libxext-dev &&\
+    libxext-dev \
+    iproute2 \
+    procps \
+    iputils-ping &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
@@ -35,6 +38,7 @@ ADD files/attendize/env /var/www/html/.env
 ADD files/bash/entry.sh /opt/bin/entry.sh
 RUN chmod +x /opt/bin/entry.sh &&\
     composer.phar install &&\
+    chown -R www-data:www-data . &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 EXPOSE 80
