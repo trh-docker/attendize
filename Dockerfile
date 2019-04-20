@@ -37,7 +37,7 @@ ADD files/php/php.ini /etc/php/7.3/fpm/
 ADD files/attendize/env /var/www/html/.env
 ADD files/bash/entry.sh /opt/bin/entry.sh
 ADD files/php/www.conf /etc/php/7.3/fpm/pool.d/www.conf
-# ADD files/caddy/Caddyfile /opt/caddy/Caddyfile
+ADD files/caddy/Caddyfile /opt/caddy/
 RUN chmod +x /opt/bin/entry.sh &&\
     composer.phar install &&\
     chown -R www-data:www-data . &&\
