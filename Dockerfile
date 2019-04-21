@@ -30,7 +30,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B188E2B695BD4743 &&
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* 
 RUN rm -rf /var/www/html && mkdir /var/www/html && cd /var/www/html &&\
-    git clone https://github.com/Attendize/Attendize.git .
+    git clone https://gitlab.com/trhhosting/tickets.git .
 
 ADD files/php/composer.json /var/www/html 
 ADD files/php/php.ini /etc/php/7.3/fpm/

@@ -7,6 +7,8 @@
 # Caddy
 caddy -conf /opt/caddy/Caddyfile &
 # Laverl key
-php artisan key:generate
+if [ $APP_KEY == "" ] 
+    php artisan key:generate
+fi
 # Run PHP in background
 /usr/sbin/php-fpm7.3 --nodaemonize --fpm-config /etc/php/7.3/fpm/php-fpm.conf 
