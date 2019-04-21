@@ -38,7 +38,11 @@ ADD files/attendize/env /var/www/html/.env
 ADD files/bash/entry.sh /opt/bin/entry.sh
 ADD files/php/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 ADD files/caddy/Caddyfile /opt/caddy/
-RUN chmod +x /opt/bin/entry.sh &&\
+RUN mkdir -p \
+    /var/www/html/public/user_content/event_images \
+    /var/www/html/public/user_content/organiser_images  \
+    /var/www/html/public/user_content/pdf_tickets &&\
+    chmod +x /opt/bin/entry.sh &&\
     composer.phar install &&\
     chown -R www-data:www-data . &&\
     apt-get autoclean && apt-get autoremove &&\
