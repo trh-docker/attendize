@@ -8,6 +8,7 @@
 caddy -conf /opt/caddy/Caddyfile &
 # Laverl key
 if [ $APP_KEY == "" ] 
+then
     php artisan key:generate
 fi
 # Run PHP in background
